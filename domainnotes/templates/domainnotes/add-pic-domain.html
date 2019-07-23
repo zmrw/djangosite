@@ -1,0 +1,78 @@
+{% extends 'domainnotes-base.html' %}
+{% load static %}
+{% block main %}
+    <div class="page-inner">
+        <div class="page-title">
+            <h3 class="breadcrumb-header">添加域名</h3>
+        </div>
+        <div id="main-wrapper">
+            <div class="col-md-12">
+                <div class="panel panel-white">
+                    <div class="panel-heading clearfix">
+                        <h4 class="panel-title">上传文件格式必须是 日期命名 example：2019-07-20, 这个日期代表域名可注册日期</h4>
+                        <h4 class="panel-title">it跟coza 域名日期加一天，比如我找7月22号域名，coza跟it 23号才可以注册</h4>
+                        <h4 class="panel-title">通过域名后缀找域名 规则同上（还没有写这个功能）</h4>
+                    </div>
+                    <div class="panel-body">
+                        <form enctype="multipart/form-data" action="/domainpic/uploadpicdomain/" method="post">
+                            {% if message1 %}
+                                <div class="alert alert-warning">{{ message1 }}</div>
+                            {% endif %}
+                            {% csrf_token %}
+                            <input type="file" name="myfile"/>
+                            <br/>
+                            <input type="submit" value="上传"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>可注册日期</th>
+                            <th>点击截图当前日期</th>
+                            <th>查看截图当前日期-新</th>
+                            <th>查看截图当前日期-旧</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for domain in domainpiclist %}
+                            <tr>
+                                <td>
+                                    <a href="/domainpic/date/{{ domain.domainExpireDate|date:"Y-m-d" }}">{{ domain.domainExpireDate }}</a>
+                                </td>
+                                <td>
+                                    <a href="/domainpic/getdateallpic/{{ domain.domainExpireDate|date:"Y-m-d" }}"
+                                       class="btn btn-primary">获取截图</a></td>
+                                <td>
+                                    <a href="/domainpic/showdatepicdomain/{{ domain.domainExpireDate|date:"Y-m-d" }}"
+                                       class="btn btn-primary">查看截图-新</a></td>
+                                <td>
+                                    <a href="/domainpic/showdatepicdomainold/{{ domain.domainExpireDate|date:"Y-m-d" }}"
+                                       class="btn btn-primary">查看截图-旧模板</a></td>
+
+                            </tr>
+                            <tr>
+
+                            </tr>
+                        {% empty %}
+                            <div class="no-post">暂时还没有添加域名！</div>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div><!-- Row -->
+    </div><!-- Main Wrapper -->
+    <div class="page-footer">
+        <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"
+                                                                     href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+        </p>
+    </div>
+    </div><!-- /Page Inner -->
+{% endblock main %}

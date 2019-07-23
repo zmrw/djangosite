@@ -1,0 +1,66 @@
+{% extends 'domainnotes-base.html' %}
+{% load static %}
+{% block main %}
+    <div class="page-inner">
+        <div class="page-title">
+            <h3 class="breadcrumb-header">Gallery</h3>
+        </div>
+        <div id="main-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-white">
+                        <div class="panel-body">
+                            <div id="grid-gallery" class="grid-gallery">
+                                <section class="grid-wrap">
+                                    <ul class="grid">
+                                        {% for domain in domainpics %}
+                                            <li>
+                                                <figure>
+                                                    <img src="/static/domainpic/image/{{ domain.domainExpireDate|date:"Y-m-d" }}/{{ domain.domain }}.png"
+                                                    />
+                                                    <figcaption><h3><a href="https://web.archive.org/web/201805/{{ domain.domain }}">{{ domain.domain }}</a> </h3>
+                                                        <p>{{ domain.domainpic.domainHistory }}</p>
+                                                    </figcaption>
+                                                </figure>
+                                            </li>
+                                        {% empty %}
+                                            <div class="no-post">暂时还没有添加域名！</div>
+                                        {% endfor %}
+                                    </ul>
+                                </section>
+                                <section class="slideshow">
+                                    <ul>
+                                        {% for domain in domainpics %}
+                                            <li>
+                                                <figure>
+                                                    <figcaption>
+                                                        <h3><a href="https://web.archive.org/web/201805/{{ domain.domain }}" target="_blank">{{ domain.domain }}</a></h3>
+                                                        <p>{{ domain.domainpic.domainHistory }}</p>
+                                                    </figcaption>
+                                                    <img src="/static/domainpic/image/{{ domain.domainExpireDate|date:"Y-m-d" }}/{{ domain.domain }}.png"
+                                                    />
+                                                </figure>
+                                            </li>
+                                        {% empty %}
+                                            <div class="no-post">暂时还没有添加域名！</div>
+                                        {% endfor %}
+                                    </ul>
+                                    <nav>
+                                        <span class="fa fa-angle-left nav-prev"></span>
+                                        <span class="fa fa-angle-right nav-next"></span>
+                                        <span class="icon-close nav-close"></span>
+                                    </nav>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"
+                                                                         href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+            </p>
+        </div>
+    </div>
+{% endblock main %}

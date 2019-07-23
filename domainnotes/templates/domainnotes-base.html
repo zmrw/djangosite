@@ -1,0 +1,315 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>域名管理系统</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="{% static 'domainnotes/assets/plugins/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'domainnotes/assets/plugins/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'domainnotes/assets/plugins/icomoon/style.css' %}" rel="stylesheet">
+    <link href="{% static 'domainnotes/assets/plugins/uniform/css/default.css' %}" rel="stylesheet"/>
+    <link href="{% static 'domainnotes/assets/plugins/switchery/switchery.min.css' %}" rel="stylesheet"/>
+    <link href="{% static 'domainnotes/assets/plugins/summernote-master/summernote.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'domainnotes/assets/plugins/bootstrap-datepicker/css/datepicker3.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'domainnotes/assets/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.css' %}"
+          rel="stylesheet" type="text/css"/>
+    <link href="{% static 'domainnotes/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css' %}" rel="stylesheet"
+          type="text/css"/>
+    <link href="{% static 'domainnotes/assets/plugins/bootstrap-timepicker/css/bootstrap-timepicker.min.css' %}"
+          rel="stylesheet" type="text/css"/>
+    <link href="{% static 'domainnotes/assets/plugins/plupload/js/jquery.plupload.queue/css/jquery.plupload.queue.css' %}"
+          rel="stylesheet" type="text/css"/>
+
+    <!-- Theme Styles -->
+    <link href="{% static 'domainnotes/assets/css/ecaps.min.css' %}" rel="stylesheet">
+    <link href="{% static 'domainnotes/assets/css/custom.css' %}" rel="stylesheet">
+    <link href="{% static 'domainnotes/assets/plugins/gridgallery/css/component.css' %}" rel="stylesheet">
+    <script src="{% static 'domainnotes/assets/plugins/gridgallery/js/modernizr.custom.js' %}"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js' %}"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js' %}"></script>
+        <![endif]-->
+</head>
+<body>
+
+<!-- Page Container -->
+<div class="page-container">
+    <!-- Page Sidebar -->
+    <div class="page-sidebar">
+        <a class="logo-box" href="/index/">
+            <span>域名管理系统</span>
+            <i class="icon-radio_button_unchecked" id="fixed-sidebar-toggle-button"></i>
+            <i class="icon-close" id="sidebar-toggle-button-close"></i>
+        </a>
+        <div class="page-sidebar-inner">
+            <div class="page-sidebar-menu">
+                <ul class="accordion-menu">
+                    <li>
+                        <a href="/index/">
+                            <i class="menu-icon icon-home4"></i><span>控制面板</span>
+                        </a>
+                    </li>
+                    {#                            <li>#}
+                    {#                                <a href="email.html">#}
+                    {#                                    <i class="menu-icon icon-inbox"></i><span>Email</span>#}
+                    {#                                </a>#}
+                    {#                            </li>#}
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="menu-icon icon-flash_on"></i><span>域名管理</span><i
+                                class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="/domainnotes/alldomain/">所有域名</a></li>
+                            <li><a href="/domainnotes/adddomain/">添加域名</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="menu-icon icon-flash_on"></i><span>域名截图</span><i
+                                class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+{#                            <li><a href="/domainpic/getpic/">测试截图域名</a></li>#}
+                            <li><a href="/domainpic/uploadpicdomain/">添加截图域名</a></li>
+                            <li><a href="/domainpic/allpicdomain/">所有域名</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0);">
+                            <i class="menu-icon icon-flash_on"></i><span>添加Cloudflare</span><i
+                                class="accordion-icon fa fa-angle-left"></i>
+                        </a>
+                        <ul class="sub-menu">
+{#                            <li><a href="/domainpic/getpic/">测试截图域名</a></li>#}
+                            <li><a href="/cloudflare/addcloudflare/">添加Cloudflare账户</a></li>
+                            <li><a href="/cloudflare/addcloudflaredomain/">添加域名到Cloudflare</a></li>
+                        </ul>
+                    </li>
+                    {#                            <li>#}
+                    {#                                <a href="javascript:void(0);">#}
+                    {#                                    <i class="menu-icon icon-layers"></i><span>Layouts</span><i class="accordion-icon fa fa-angle-left"></i>#}
+                    {#                                </a>#}
+                    {#                                <ul class="sub-menu">#}
+                    {#                                    <li><a href="layout-blank.html">Blank Page</a></li>#}
+                    {#                                    <li><a href="layout-boxed.html">Boxed Layout</a></li>#}
+                    {#                                    <li><a href="layout-collapsed-sidebar.html">Collapsed Sidebar</a></li>#}
+                    {#                                    <li><a href="layout-fixed-header.html">Fixed Header</a></li>#}
+                    {#                                    <li><a href="layout-fixed-sidebar.html">Fixed Sidebar</a></li>#}
+                    {#                                    <li><a href="layout-fixed-sidebar-header.html">Fixed Sidebar &amp; Header</a></li>#}
+                    {#                                </ul>#}
+                    {#                            </li>#}
+                    {#                            <li class="active-page">#}
+                    {#                                <a href="javascript:void(0);">#}
+                    {#                                    <i class="menu-icon icon-code"></i><span>Forms</span><i class="accordion-icon fa fa-angle-left"></i>#}
+                    {#                                </a>#}
+                    {#                                <ul class="sub-menu">#}
+                    {#                                    <li><a href="form-elements.html" class="active">Elements</a></li>#}
+                    {#                                    <li><a href="form-wizard.html">Form Wizard</a></li>#}
+                    {#                                    <li><a href="form-file-upload.html">File Upload</a></li>#}
+                    {#                                    <li><a href="form-image-crop.html">Image Crop</a></li>#}
+                    {#                                    <li><a href="form-image-zoom.html">Image Zoom</a></li>#}
+                    {#                                    <li><a href="form-x-editable.html">X-editable</a></li>#}
+                    {#                                </ul>#}
+                    {#                            </li>#}
+                    {#                            <li>#}
+                    {#                                <a href="javascript:void(0);">#}
+                    {#                                    <i class="menu-icon icon-format_list_bulleted"></i><span>Tables</span><i class="accordion-icon fa fa-angle-left"></i>#}
+                    {#                                </a>#}
+                    {#                                <ul class="sub-menu">#}
+                    {#                                    <li><a href="table-static.html">Static</a></li>#}
+                    {#                                    <li><a href="table-responsive.html">Responsive</a></li>#}
+                    {#                                    <li><a href="table-data.html">Data Tables</a></li>#}
+                    {#                                </ul>#}
+                    {#                            </li>#}
+                    {#                            <li>#}
+                    {#                                <a href="charts.html">#}
+                    {#                                    <i class="menu-icon icon-show_chart"></i><span>Charts</span>#}
+                    {#                                </a>#}
+                    {#                            </li>#}
+                    {#                            <li>#}
+                    {#                                <a href="javascript:void(0);">#}
+                    {#                                    <i class="menu-icon icon-my_location"></i><span>Maps</span><i class="accordion-icon fa fa-angle-left"></i>#}
+                    {#                                </a>#}
+                    {#                                <ul class="sub-menu">#}
+                    {#                                    <li><a href="maps-google.html">Google</a></li>#}
+                    {#                                    <li><a href="maps-vector.html">Vector</a></li>#}
+                    {#                                </ul>#}
+                    {#                            </li>#}
+                    {#                            <li>#}
+                    {#                                <a href="javascript:void(0);">#}
+                    {#                                    <i class="menu-icon icon-star"></i><span>Extra</span><i class="accordion-icon fa fa-angle-left"></i>#}
+                    {#                                </a>#}
+                    {#                                <ul class="sub-menu">#}
+                    {#                                    <li><a href="invoice.html">Invoice</a></li>#}
+                    {#                                    <li><a href="404.html">404 Page</a></li>#}
+                    {#                                    <li><a href="500.html">500 Page</a></li>#}
+                    {#                                    <li><a href="profile.html">Profile</a></li>#}
+                    {#                                    <li><a href="login.html">Login</a></li>#}
+                    {#                                    <li><a href="register.html">Register</a></li>#}
+                    {#                                    <li><a href="lockscreen.html">Lockscreen</a></li>#}
+                    {#                                    <li><a href="todo.html">Todo</a></li>#}
+                    {#                                    <li><a href="gallery.html">Gallery</a></li>#}
+                    {#                                    <li><a href="pricing-tables.html">Pricing Tables</a></li>#}
+                    {#                                    <li><a href="timeline.html">Timeline</a></li>#}
+                    {#                                </ul>#}
+                    {#                            </li>#}
+                    {#                            <li class="menu-divider"></li>#}
+                    {#                            <li>#}
+                    {#                                <a href="index.html">#}
+                    {#                                    <i class="menu-icon icon-help_outline"></i><span>Documentation</span>#}
+                    {#                                </a>#}
+                    {#                            </li>#}
+                    {#                            <li>#}
+                    {#                                <a href="index.html">#}
+                    {#                                    <i class="menu-icon icon-public"></i><span>Changelog</span><span class="label label-danger">1.0</span>#}
+                    {#                                </a>#}
+                    {#                            </li>#}
+                </ul>
+            </div>
+        </div>
+    </div><!-- /Page Sidebar -->
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="search-form">
+                <form action="#" method="GET">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control search-input"
+                               placeholder="Type something...">
+                        <span class="input-group-btn">
+                                    <button class="btn btn-default" id="close-search" type="button"><i
+                                            class="icon-close"></i></button>
+                                </span>
+                    </div>
+                </form>
+            </div>
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <div class="logo-sm">
+                            <a href="javascript:void(0)" id="sidebar-toggle-button"><i class="fa fa-bars"></i></a>
+                            <a class="logo-box" href="index.html"><span>ecaps</span></a>
+                        </div>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li><a href="javascript:void(0)" id="collapsed-sidebar-toggle-button"><i
+                                    class="fa fa-bars"></i></a></li>
+                            <li><a href="javascript:void(0)" id="toggle-fullscreen"><i class="fa fa-expand"></i></a>
+                            </li>
+                            <li><a href="javascript:void(0)" id="search-button"><i class="fa fa-search"></i></a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="javascript:void(0)" class="right-sidebar-toggle"
+                                   data-sidebar-id="main-right-sidebar"><i class="fa fa-envelope"></i></a></li>
+                            <li class="dropdown">
+                                <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"
+                                   role="button" aria-haspopup="true" aria-expanded="false"><i
+                                        class="fa fa-bell"></i></a>
+                                <ul class="dropdown-menu dropdown-lg dropdown-content">
+                                    <li class="drop-title">Notifications<a href="#" class="drop-title-link"><i
+                                            class="fa fa-angle-right"></i></a></li>
+                                    <li class="slimscroll dropdown-notifications">
+                                        <ul class="list-unstyled dropdown-oc">
+                                            <li>
+                                                <a href="#"><span class="notification-badge bg-primary"><i
+                                                        class="fa fa-photo"></i></span>
+                                                    <span class="notification-info">Finished uploading photos to gallery <b>"South Africa"</b>.
+                                                                <small class="notification-date">20:00</small>
+                                                            </span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="notification-badge bg-primary"><i
+                                                        class="fa fa-at"></i></span>
+                                                    <span class="notification-info"><b>John Doe</b> mentioned you in a post "Update v1.5".
+                                                                <small class="notification-date">06:07</small>
+                                                            </span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="notification-badge bg-danger"><i
+                                                        class="fa fa-bolt"></i></span>
+                                                    <span class="notification-info">4 new special offers from the apps you follow!
+                                                                <small class="notification-date">Yesterday</small>
+                                                            </span></a>
+                                            </li>
+                                            <li>
+                                                <a href="#"><span class="notification-badge bg-success"><i
+                                                        class="fa fa-bullhorn"></i></span>
+                                                    <span class="notification-info">There is a meeting with <b>Ethan</b> in 15 minutes!
+                                                                <small class="notification-date">Yesterday</small>
+                                                            </span></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown user-dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false"><img
+                                        src="http://via.placeholder.com/36x36" alt="" class="img-circle"></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="#">Calendar</a></li>
+                                    <li><a href="#"><span class="badge pull-right badge-danger">42</span>Messages</a>
+                                    </li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">Account Settings</a></li>
+                                    <li><a href="/logout/">Log Out</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div><!-- /.container-fluid -->
+            </nav>
+        </div>
+
+        {% block main %}
+        {% endblock main %}
+
+    </div><!-- /Page Content -->
+</div><!-- /Page Container -->
+
+
+<!-- Javascripts -->
+<script src="{% static 'domainnotes/assets/plugins/jquery/jquery-3.1.0.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/uniform/js/jquery.uniform.standalone.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/switchery/switchery.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/summernote-master/summernote.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/bootstrap-timepicker/js/bootstrap-timepicker.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/js/ecaps.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/js/pages/form-elements.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/plupload/js/plupload.full.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/plupload/js/jquery.plupload.queue/jquery.plupload.queue.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/js/pages/form-file-upload.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/gridgallery/js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/gridgallery/js/masonry.pkgd.min.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/gridgallery/js/classie.js' %}"></script>
+<script src="{% static 'domainnotes/assets/plugins/gridgallery/js/cbpgridgallery.js' %}"></script>
+<script src="{% static 'domainnotes/assets/js/pages/gallery.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+{% extends 'domainnotes-base.html' %}
+{% load static %}
+{% block main %}
+    <div class="page-inner">
+        <div class="page-title">
+            <h3 class="breadcrumb-header">添加域名</h3>
+        </div>
+        <div id="main-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-white">
+                        <div class="panel-body">
+                            <form action="/domainnotes/adddomain/" method="post">
+                                {% if message %}
+                                    <div class="alert alert-warning">{{ message }}</div>
+                                {% endif %}
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">单个域名添加</label>
+                                    <input type="text" class="form-control" placeholder="域名" name="domain">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel panel-white">
+                        <div class="panel-body">
+                            <form action="/domainnotes/adddomains/" method="post">
+                                {% if message2 %}
+                                    <div class="alert alert-warning">{{ message2 }}</div>
+                                {% endif %}
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">多个个域名添加，一行一个域名</label>
+                                    <textarea type="text" class="input-large form-control" placeholder="域名" rows="8" name="domains"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel panel-white">
+                        <div class="panel-heading clearfix">
+                            <h4 class="panel-title">批量添加</h4>
+                        </div>
+                        <div class="panel-body">
+                            <form enctype="multipart/form-data" action="/domainnotes/upload/" method="post">
+                                {% if message1 %}
+                                    <div class="alert alert-warning">{{ message1 }}</div>
+                                {% endif %}
+                                {% csrf_token %}
+                                <input type="file" name="myfile"/>
+                                <br/>
+                                <input type="submit" value="upload"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"
+                                                                         href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+            </p>
+        </div>
+    </div><!-- /Page Inner -->
+{% endblock main %}

@@ -1,0 +1,65 @@
+{% extends 'domainnotes-base.html' %}
+{% load static %}
+{% block main %}
+    <div class="page-inner">
+        <div class="page-title">
+            <h3 class="breadcrumb-header">添加cloudflare账户</h3>
+        </div>
+        <div id="main-wrapper">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-white">
+                        <div class="panel-body">
+                            <form action="/cloudflare/addcloudflare/" method="post">
+                                {% if message %}
+                                    <div class="alert alert-warning">{{ message }}</div>
+                                {% endif %}
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="cloudflare邮箱"
+                                           name="cloudflareemail">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="cloudflareAPI"
+                                           name="cloudflareapi">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel panel-white">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>cloudflare账户列表</th>
+                                        <th>api</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for cloudflare in cloudflarelist %}
+                                        <tr>
+                                            <td>{{ cloudflare.email }}</td>
+                                            <td>{{ cloudflare.api }}</td>
+                                        </tr>
+                                    {% empty %}
+                                        <div class="no-post">暂时还没有添加cloudflare！</div>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Row -->
+        </div><!-- Main Wrapper -->
+        <div class="page-footer">
+            <p>Copyright &copy; 2018.Company name All rights reserved.<a target="_blank"
+                                                                         href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+            </p>
+        </div>
+    </div><!-- /Page Inner -->
+{% endblock main %}

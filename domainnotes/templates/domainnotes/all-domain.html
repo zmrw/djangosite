@@ -1,0 +1,58 @@
+{% extends 'domainnotes-base.html' %}
+{% load static %}
+{% block main %}
+    <div class="page-inner">
+        <div class="page-title">
+            <h3 class="breadcrumb-header">域名总览</h3>
+        </div>
+        <div id="main-wrapper">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-white">
+                        <div class="panel-heading clearfix">
+                            <h4 class="panel-title">全部域名</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>域名</th>
+                                        <th>是否上站</th>
+                                        <th>添加日期</th>
+                                        <th>vps</th>
+                                        <th>cloudflire邮箱</th>
+                                        <th>上站日期</th>
+                                        <th>上站模板</th>
+                                        <th>上站数据库</th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for domain in domainlists %}
+                                        <tr>
+                                            <td>{{ domain.domain }}</td>
+                                            <td>{{ domain.hasDo }}</td>
+                                            <td>{{ domain.add_time }}</td>
+                                            <td>{{ domain.domainnotes.domainVps }}</td>
+                                            <td>{{ domain.domainnotes.domainCloudflare }}</td>
+                                            <td>{{ domain.domainnotes.domainDoDate }}</td>
+                                            <td>{{ domain.domainnotes.doaminTemplate }}</td>
+                                            <td>{{ domain.domainnotes.domainDb }}</td>
+                                        </tr>
+                                    {% empty %}
+                                        <div class="no-post">暂时还没有添加域名！</div>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-footer">
+            <p>Copyright &copy; 2018.Company name All rights reserved.</p>
+        </div>
+    </div><!-- /Page Inner -->
+{% endblock main %}

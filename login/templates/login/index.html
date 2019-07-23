@@ -1,0 +1,59 @@
+{% extends 'domainnotes-base.html' %}
+{% load static %}
+{% block main %}
+    <div class="page-inner">
+                <div class="page-title">
+                    <h3 class="breadcrumb-header">信息总览</h3>
+                </div>
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-white stats-widget">
+                                <div class="panel-body">
+                                    <div class="pull-left">
+                                        <span class="stats-number">{{ domaincount }}</span>
+                                        <p class="stats-info">域名总数</p>
+                                    </div>
+                                    <div class="pull-right">
+                                        <i class="icon-arrow_upward stats-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-white stats-widget">
+                                <div class="panel-body">
+                                    <div class="pull-left">
+                                        <span class="stats-number">{{ hasdodomaincount }}</span>
+                                        <p class="stats-info">以上站域名</p>
+                                    </div>
+                                    <div class="pull-right">
+                                        <i class="icon-arrow_downward stats-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="panel panel-white stats-widget">
+                                <div class="panel-body">
+                                    <div class="pull-left">
+                                        <span class="stats-number">{{ notdodomaincount }}</span>
+                                        <p class="stats-info">未上站域名</p>
+                                    </div>
+                                    <div class="pull-right">
+                                        <i class="icon-arrow_upward stats-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- Main Wrapper -->
+                <div class="page-footer">
+                    <p>Copyright &copy; 2018.Company name All rights reserved.</p>
+                </div>
+            </div><!-- /Page Inner -->
+
+
+        </div><!-- /Page Content -->
+    </div>
+{% endblock main %}
